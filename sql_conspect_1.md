@@ -23,7 +23,7 @@ SELECT field
 FROM table
 WHERE condition;
 ```
-> Operators
+> Operators:\
 =\
 \>\
 <\
@@ -93,7 +93,7 @@ Exctracts specific time unit froma DATE or a TIMESTAMP
 ```psql
 EXTRACT(time_unit FROM value)
 ```
-> Possible time units:
+> Possible time units:\
 CENTURY\
 DAY\
 DECADE\
