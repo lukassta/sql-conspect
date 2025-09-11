@@ -1,13 +1,13 @@
 # SQL conspect 1
 A conspect for postgresql queries that will be required for lab work 1
 
-> Note all examples are writen when logged in as user stud
-> you can log in as stud using this command:
+> Note: all examples are writen when logged in as user stud\
+you can log in as stud using this command:
 ```bash
 psql -h pgsql3.mif biblio -U stud
 ```
 
-[databse strcuture here](https://klevas.mif.vu.lt/~baronas/dbvs/biblio/bibliosh.htm)
+[database structure here](https://klevas.mif.vu.lt/~baronas/dbvs/biblio/bibliosh.htm)
 
 ## [Select](https://www.postgresql.org/docs/current/sql-select.html)
 ### SELECT
@@ -24,19 +24,19 @@ FROM table
 WHERE condition;
 ```
 > Operators
-> =
-> >
-> <
-> >=
-> <=
-> <> or !=
-> AND
-> OR
-> IN
-> BETWEEN low AND high
-> LIKE
-> IS NULL
-> NOT
+=\
+\>\
+<\
+\>=\
+<=\
+<> or !=\
+AND\
+OR\
+IN\
+BETWEEN low AND high\
+LIKE\
+IS NULL\
+NOT\
 
 Example: Select users with names 'Lukas'
 ```psql
@@ -58,9 +58,10 @@ Returns only unique values
 field LIKE 'string_%';
 ```
 Returns bool if field is like string
-> _ - wild card, any single character
-> % - 0, one or more characters
-> Can be combined with AND or OR
+> _ - wild card, any single character\
+% - 0, one or more characters\
+Can be combined with AND or OR
+
 Example: Select adreses that contains two 'i' letters
 ```psql
 SELECT vardas, pavarde, adresas 
@@ -73,7 +74,8 @@ SELECT vardas, vardas LIKE '%o%'
 FROM skaitytojas;
 ```
 
-## [LOWER](https://www.postgresql.org/docs/9.1/functions-string.html)
+## [String functions and operators](https://www.postgresql.org/docs/9.1/functions-string.html)
+### LOWER
 Makes strings lowercase 'LabAs' => 'labas'
 > Useful when comparing two strings, because 'Jonas' != 'jonas'
 
@@ -81,11 +83,10 @@ Makes strings lowercase 'LabAs' => 'labas'
 ## [Aggregate functions](https://www.postgresql.org/docs/8.2/functions-aggregate.html)
 ### AVG
 Returns average value
-> Null values will not be counted towards will not count towards the average
+> Null values will not be counted towards the average
 ### COUNT
-Counts values, that are **not null**. 
-> If user name is null and you query COUNT(vardas), user without a name will not be counter
-> COUNT(vardas, pavarde) will count people who have a name, a surname or both, won't count people who do not have a surname or name
+Counts values, that are **not null**.
+> If user name is null and you query COUNT(vardas), user without a name will not be counted COUNT(vardas, pavarde) will count people who have a name, a surname or both, won't count people who do not have a surname or name
 ### MAX
 Returns biggest value
 ### MIN
@@ -94,7 +95,7 @@ Returns smallest value
 Returns sum of values
 
 
-## [Conditional Expressions](https://www.postgresql.org/docs/current/functions-conditional.html)
+## [Conditional expressions](https://www.postgresql.org/docs/current/functions-conditional.html)
 ### CASE
 ```psql
 SELECT CASE
@@ -120,4 +121,3 @@ WHERE NULLIF(LOWER(vardas), 'vardenis');
 SELECT COUNT(NULLIF(LOWER(vardas), 'lukas'))
 FROM skaitytojai,
 ```
-
