@@ -141,7 +141,7 @@ Counts values, that are **not null**.
 SELECT COUNT(field)
 FROM table;
 ```
-> If user name is null and you query COUNT(vardas), user without a name will not be counted COUNT(vardas, pavarde) will count people who have a name, a surname or both, won't count people who do not have a surname or name
+> `COUNT(vardas)` counts the number of rows where `vardas IS NOT NULL`. `COUNT(vardas, pavarde)` is equivalent to `COUNT(ROW(vardas, pavarde))` and since a row is considered to be `NULL` iff all of its fields are `NULL`, `COUNT(vardas, pavarde)` counts rows where `vardas IS NOT NULL OR pavarde IS NOT NULL`. In other words, if at least one value in the row `IS NOT NULL`, the row will be counted.
 
 ### MAX
 Returns biggest value
